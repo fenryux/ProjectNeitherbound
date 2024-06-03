@@ -4,10 +4,46 @@
 #include "Player/NeitherboundPlayerController.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
+#include "Interface/TargetInterface.h"
 
 ANeitherboundPlayerController::ANeitherboundPlayerController()
 {
 	bReplicates = true;
+}
+
+void ANeitherboundPlayerController::PlayerTick(float DeltaTime)
+{
+	Super::PlayerTick(DeltaTime);
+
+	CursorTrace();
+}
+
+void ANeitherboundPlayerController::CursorTrace()
+{
+	FHitResult CursorHit;
+	GetHitResultUnderCursor(ECC_Visibility, false, CursorHit);
+
+	if(!CursorHit.bBlockingHit)
+		return;
+
+	LastActor    = CurrentActor;
+	CurrentActor = Cast<ITargetInterface>(CursorHit.GetActor());
+
+	if(!LastActor)
+	{
+		if(CurrentActor)
+			CurrentActor->HighlightActor();
+	}
+	else
+	{
+		if(!CurrentActor)
+			LastActor->UnhighlightActor();
+		else if(LastActor != CurrentActor)
+		{
+			LastActor->UnhighlightActor();
+			CurrentActor->HighlightActor();
+		}
+	}
 }
 
 void ANeitherboundPlayerController::BeginPlay()

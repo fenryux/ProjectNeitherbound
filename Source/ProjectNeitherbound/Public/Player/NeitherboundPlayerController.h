@@ -8,6 +8,7 @@
 
 class UInputMappingContext;
 class UInputAction;
+class ITargetInterface;
 struct FInputActionValue;
 
 /**
@@ -20,6 +21,8 @@ class PROJECTNEITHERBOUND_API ANeitherboundPlayerController : public APlayerCont
 
 public:
 	ANeitherboundPlayerController();
+
+	virtual void PlayerTick(float DeltaTime) override;
 
 protected:
 	virtual void BeginPlay() override;
@@ -34,4 +37,9 @@ private:
 	TObjectPtr<UInputAction> MoveAction;
 
 	void Move(const FInputActionValue& InputActionValue);
+
+	void CursorTrace();
+	
+	TObjectPtr<ITargetInterface> LastActor;
+	TObjectPtr<ITargetInterface> CurrentActor;
 };
