@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
-#include "NeitherboundPlayerController.generated.h"
+#include "NBPlayerController.generated.h"
 
 class UInputMappingContext;
 class UInputAction;
@@ -15,12 +15,12 @@ struct FInputActionValue;
  * 
  */
 UCLASS()
-class PROJECTNEITHERBOUND_API ANeitherboundPlayerController : public APlayerController
+class PROJECTNEITHERBOUND_API ANBPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 
 public:
-	ANeitherboundPlayerController();
+	ANBPlayerController();
 
 	virtual void PlayerTick(float DeltaTime) override;
 

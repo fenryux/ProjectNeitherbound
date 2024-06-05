@@ -3,20 +3,20 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Character/NeitherboundCharacterBase.h"
+#include "Character/NBCharacterBase.h"
 #include "Interface/TargetInterface.h"
-#include "NeitherboundEnemyCharacter.generated.h"
+#include "NBEnemyCharacter.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class PROJECTNEITHERBOUND_API ANeitherboundEnemyCharacter : public ANeitherboundCharacterBase, public ITargetInterface
+class PROJECTNEITHERBOUND_API ANBEnemyCharacter : public ANBCharacterBase, public ITargetInterface
 {
 	GENERATED_BODY()
 
 public:
-	ANeitherboundEnemyCharacter();
+	ANBEnemyCharacter();
 	
 	virtual void Tick(float DeltaSeconds) override;
 	

@@ -1,24 +1,24 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Player/NeitherboundPlayerController.h"
+#include "Player/NBPlayerController.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 #include "Interface/TargetInterface.h"
 
-ANeitherboundPlayerController::ANeitherboundPlayerController()
+ANBPlayerController::ANBPlayerController()
 {
 	bReplicates = true;
 }
 
-void ANeitherboundPlayerController::PlayerTick(float DeltaTime)
+void ANBPlayerController::PlayerTick(float DeltaTime)
 {
 	Super::PlayerTick(DeltaTime);
 
 	CursorTrace();
 }
 
-void ANeitherboundPlayerController::CursorTrace()
+void ANBPlayerController::CursorTrace()
 {
 	FHitResult CursorHit;
 	GetHitResultUnderCursor(ECC_Visibility, false, CursorHit);
@@ -46,7 +46,7 @@ void ANeitherboundPlayerController::CursorTrace()
 	}
 }
 
-void ANeitherboundPlayerController::BeginPlay()
+void ANBPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 	check(HeroContext);
@@ -65,16 +65,16 @@ void ANeitherboundPlayerController::BeginPlay()
 	SetInputMode(InputModeData);
 }
 
-void ANeitherboundPlayerController::SetupInputComponent()
+void ANBPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 
 	UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(InputComponent);
 
-	EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ANeitherboundPlayerController::Move);
+	EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ANBPlayerController::Move);
 }
 
-void ANeitherboundPlayerController::Move(const FInputActionValue& InputActionValue)
+void ANBPlayerController::Move(const FInputActionValue& InputActionValue)
 {
 	const FVector2d InputAxisVector  = InputActionValue.Get<FVector2d>();
 	const FRotator  Rotation         = GetControlRotation();

@@ -1,15 +1,15 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Character/NeitherboundCharacterBase.h"
+#include "Character/NBCharacterBase.h"
 
 // Sets default values
-ANeitherboundCharacterBase::ANeitherboundCharacterBase()
+ANBCharacterBase::ANBCharacterBase()
 {
 	PrimaryActorTick.bCanEverTick = false;
 }
 
-void ANeitherboundCharacterBase::BeginPlay()
+void ANBCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
 }

@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "NeitherboundGameModeBase.generated.h"
+#include "NBGameModeBase.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class PROJECTNEITHERBOUND_API ANeitherboundGameModeBase : public AGameModeBase
+class PROJECTNEITHERBOUND_API ANBGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 	

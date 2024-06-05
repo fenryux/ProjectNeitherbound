@@ -4,15 +4,15 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "NeitherboundCharacterBase.generated.h"
+#include "NBCharacterBase.generated.h"
 
 UCLASS(Abstract)
-class PROJECTNEITHERBOUND_API ANeitherboundCharacterBase : public ACharacter
+class PROJECTNEITHERBOUND_API ANBCharacterBase : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
-	ANeitherboundCharacterBase();
+	ANBCharacterBase();
 
 protected:
 	virtual void BeginPlay() override;
