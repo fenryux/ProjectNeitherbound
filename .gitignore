@@ -52,8 +52,13 @@ Plugins/*/Binaries/*
 # Builds
 Build/*
 
-# Assets
+# Whitelist certain assets like Blueprint classes etc.
+!Content/
 Content/*
+!Content/Blueprints
+!Content/Materials
+!Content/*.uasset
+!Content/*.umap
 
 # Whitelist PakBlacklist-<BuildConfiguration>.txt files
 !Build/*/
