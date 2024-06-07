@@ -9,6 +9,11 @@ ANBCharacterBase::ANBCharacterBase()
 	PrimaryActorTick.bCanEverTick = false;
 }
 
+UAbilitySystemComponent* ANBCharacterBase::GetAbilitySystemComponent() const
+{
+	return AbilitySystemComponent;
+}
+
 void ANBCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();

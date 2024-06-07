@@ -17,10 +17,15 @@ class PROJECTNEITHERBOUND_API ANBEnemyCharacter : public ANBCharacterBase, publi
 
 public:
 	ANBEnemyCharacter();
-	
-	virtual void Tick(float DeltaSeconds) override;
-	
-	virtual void HighlightActor() override;
 
+	virtual void Tick(float DeltaSeconds) override;
+
+	//~ Begin ITargetInterface
+	virtual void HighlightActor() override;
 	virtual void UnhighlightActor() override;
+	//~ End ITargetInterface
+	
+protected:
+	virtual void BeginPlay() override;
+	
 };

@@ -6,6 +6,8 @@
 #include "Character/NBCharacterBase.h"
 #include "NBHeroCharacter.generated.h"
 
+class UNBAttributeSet;
+class ANBPlayerState;
 class UCameraComponent;
 class USpringArmComponent;
 /**
@@ -21,6 +23,11 @@ public:
 
 protected:
 	virtual void Tick(float DeltaSeconds) override;
+	
+	virtual void PossessedBy(AController* NewController) override;
+
+	virtual void OnRep_PlayerState() override;
 
 private:
+	void InitAbilityActorInfo();
 };
