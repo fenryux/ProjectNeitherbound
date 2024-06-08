@@ -57,6 +57,7 @@ Build/*
 Content/*
 !Content/Blueprints
 !Content/Materials
+!Content/UI
 !Content/*.uasset
 !Content/*.umap
 
