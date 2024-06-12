@@ -29,6 +29,7 @@ void ANBEffectActor::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor*
 		const UNBAttributeSet* NBAttributeSet = Cast<UNBAttributeSet>(ASCInterface->GetAbilitySystemComponent()->GetAttributeSet(UNBAttributeSet::StaticClass()));
 		UNBAttributeSet* MutableNBAttributeSet = const_cast<UNBAttributeSet*>(NBAttributeSet);
 		MutableNBAttributeSet->SetHealth(NBAttributeSet->GetHealth() + 50.f);
+		MutableNBAttributeSet->SetMana(NBAttributeSet->GetMana() - 10.f);
 		Destroy();
 	}
 }

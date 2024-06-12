@@ -4,6 +4,7 @@
 #include "Player/NBPlayerController.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
+#include "Character/NBHeroCharacter.h"
 #include "Interface/TargetInterface.h"
 
 ANBPlayerController::ANBPlayerController()
@@ -52,9 +53,8 @@ void ANBPlayerController::BeginPlay()
 	check(HeroContext);
 
 	UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
-	check(Subsystem);
-
-	Subsystem->AddMappingContext(HeroContext, 0);
+	if(Subsystem)
+		Subsystem->AddMappingContext(HeroContext, 0);
 
 	bShowMouseCursor = true;
 	DefaultMouseCursor = EMouseCursor::Type::Default;
@@ -83,8 +83,9 @@ void ANBPlayerController::Move(const FInputActionValue& InputActionValue)
 	const FVector  ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 	const FVector  RightDirection   = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 
-	if (APawn* ControlledPawn = GetPawn<APawn>())
+	if (APawn* ControlledPawn = GetPawn<ANBHeroCharacter>())
 	{
+		ControlledPawn->FaceRotation(YawRotation);
 		ControlledPawn->AddMovementInput(ForwardDirection, InputAxisVector.Y);
 		ControlledPawn->AddMovementInput(RightDirection,   InputAxisVector.X);
 	}

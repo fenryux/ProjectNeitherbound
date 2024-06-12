@@ -7,7 +7,9 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Player/NBPlayerController.h"
 #include "Player/NBPlayerState.h"
+#include "UI/HUD/NBHUD.h"
 
 ANBHeroCharacter::ANBHeroCharacter()
 {
@@ -30,6 +32,7 @@ void ANBHeroCharacter::PossessedBy(AController* NewController)
 
 	//Server-side
 	InitAbilityActorInfo();
+
 }
 
 void ANBHeroCharacter::OnRep_PlayerState()
@@ -49,6 +52,10 @@ void ANBHeroCharacter::InitAbilityActorInfo()
 	AttributeSet           = State->GetAttributeSet();
 
 	AbilitySystemComponent->InitAbilityActorInfo(State, this);
+
+	if(TObjectPtr<ANBPlayerController> PlayerController = Cast<ANBPlayerController>(GetController()))
+		if(ANBHUD* HUD = Cast<ANBHUD>(PlayerController->GetHUD()))
+			HUD->InitOverlay(PlayerController, State, AbilitySystemComponent, AttributeSet);
 }
 
 void ANBHeroCharacter::Tick(float DeltaSeconds)

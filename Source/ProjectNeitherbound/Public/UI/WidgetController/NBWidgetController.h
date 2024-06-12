@@ -3,11 +3,38 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AbilitySystemComponent.h"
 #include "UObject/NoExportTypes.h"
 #include "NBWidgetController.generated.h"
 
 class UAttributeSet;
 class UAbilitySystemComponent;
+
+USTRUCT(BlueprintType)
+struct FWidgetControllerParams
+{
+	GENERATED_BODY()
+
+	FWidgetControllerParams() {};
+
+	FWidgetControllerParams(const TObjectPtr<APlayerController>& PlayerController, const TObjectPtr<APlayerState>& PlayerState,
+							const TObjectPtr<UAbilitySystemComponent>& AbilitySystemComponent, const TObjectPtr<UAttributeSet>& AttributeSet)
+	: PlayerController(PlayerController), PlayerState(PlayerState), AbilitySystemComponent(AbilitySystemComponent), AttributeSet(AttributeSet)
+	{}
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TObjectPtr<APlayerController> PlayerController = nullptr;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TObjectPtr<APlayerState> PlayerState = nullptr;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent = nullptr;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TObjectPtr<UAttributeSet> AttributeSet = nullptr;
+};
+
 /**
  * 
  */
@@ -15,6 +42,14 @@ UCLASS()
 class PROJECTNEITHERBOUND_API UNBWidgetController : public UObject
 {
 	GENERATED_BODY()
+
+public:
+	UFUNCTION(BlueprintCallable)
+	void SetWidgetControllerParams(const FWidgetControllerParams& WidgetControllerParams);
+
+	virtual void BroadcastInitialValues();
+
+	virtual void BindCallbacksToDependencies();
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Category="WidgetController")
