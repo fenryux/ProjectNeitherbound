@@ -7,5 +7,8 @@
 #### Assets used (WIP):
 - Paragon: Revenant;
 - Dungeon Playable Demo;
-- Free Fantasy Weapon Sample Pack;
+- https://opengameart.org/content/rpg-tooltip
+- https://opengameart.org/content/rpg-inventory
+- https://opengameart.org/content/health-orb-11
+- https://opengameart.org/content/rpg-game-ui
 - to be continued...
