@@ -1,11 +1,9 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright fenryux
 
 
 #include "Character/NBHeroCharacter.h"
 
 #include "AbilitySystemComponent.h"
-#include "Camera/CameraComponent.h"
-#include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Player/NBPlayerController.h"
 #include "Player/NBPlayerState.h"

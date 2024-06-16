@@ -25,8 +25,7 @@ public:
 	UNBAttributeSet();
 
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-
-
+	
 	//~ Begin Resource Attributes
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing=OnRep_Health, Category="Resource Attributes");
 	FGameplayAttributeData Health;
@@ -55,5 +54,9 @@ public:
 
 	UFUNCTION()
 	void OnRep_MaxMana(const FGameplayAttributeData& OldMaxMana) const;
+
+	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
+
+	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
 	//~ End Resource Attributes
 };

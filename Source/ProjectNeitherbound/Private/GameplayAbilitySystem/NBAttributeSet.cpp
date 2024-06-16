@@ -3,6 +3,8 @@
 
 #include "GameplayAbilitySystem/NBAttributeSet.h"
 #include "AbilitySystemComponent.h"
+#include "GameplayEffect.h"
+#include "GameplayEffectExtension.h"
 #include "Net/UnrealNetwork.h"
 
 UNBAttributeSet::UNBAttributeSet()
@@ -44,4 +46,28 @@ void UNBAttributeSet::OnRep_Mana(const FGameplayAttributeData& OldMana) const
 void UNBAttributeSet::OnRep_MaxMana(const FGameplayAttributeData& OldMaxMana) const
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UNBAttributeSet, MaxHealth, OldMaxMana);
+}
+
+void UNBAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue)
+{
+	Super::PreAttributeChange(Attribute, NewValue);
+
+	if(Attribute == GetHealthAttribute())
+		NewValue = FMath::Clamp(NewValue, 0.f, GetMaxHealth());
+	if(Attribute == GetManaAttribute())
+		NewValue = FMath::Clamp(NewValue, 0.f, GetMaxMana());
+}
+
+void UNBAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
+{
+	Super::PostGameplayEffectExecute(Data);
+
+	if(Data.EvaluatedData.Attribute == GetHealthAttribute())
+	{
+		SetHealth(FMath::Clamp(GetHealth(), 0.f, GetMaxHealth()));
+	}
+	if(Data.EvaluatedData.Attribute == GetManaAttribute())
+	{
+		SetMana(FMath::Clamp(GetMana(), 0.f, GetMaxMana()));
+	}
 }
