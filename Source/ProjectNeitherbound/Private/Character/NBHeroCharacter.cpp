@@ -30,7 +30,7 @@ void ANBHeroCharacter::PossessedBy(AController* NewController)
 
 	//Server-side
 	InitAbilityActorInfo();
-
+	AddCharacterAbilities();
 }
 
 void ANBHeroCharacter::OnRep_PlayerState()
@@ -54,6 +54,8 @@ void ANBHeroCharacter::InitAbilityActorInfo()
 	if(TObjectPtr<ANBPlayerController> PlayerController = Cast<ANBPlayerController>(GetController()))
 		if(ANBHUD* HUD = Cast<ANBHUD>(PlayerController->GetHUD()))
 			HUD->InitOverlay(PlayerController, State, AbilitySystemComponent, AttributeSet);
+
+	InitDefaultAttributes();
 }
 
 void ANBHeroCharacter::Tick(float DeltaSeconds)

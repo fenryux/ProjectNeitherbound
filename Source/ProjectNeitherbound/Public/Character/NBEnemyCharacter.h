@@ -23,9 +23,11 @@ public:
 	//~ Begin ITargetInterface
 	virtual void HighlightActor() override;
 	virtual void UnhighlightActor() override;
+	virtual void InteractWith() override;
 	//~ End ITargetInterface
+
+	virtual UAttributeSet* GetAttributeSet() const override;
 	
 protected:
 	virtual void BeginPlay() override;
-	
 };

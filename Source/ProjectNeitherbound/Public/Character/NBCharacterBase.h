@@ -7,6 +7,8 @@
 #include "GameFramework/Character.h"
 #include "NBCharacterBase.generated.h"
 
+class UGameplayAbility;
+class UGameplayEffect;
 class UAbilitySystemComponent;
 class UAttributeSet;
 
@@ -20,7 +22,7 @@ public:
 
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
-	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
+	virtual UAttributeSet* GetAttributeSet() const { return AttributeSet; }
 
 protected:
 	virtual void BeginPlay() override;
@@ -30,4 +32,15 @@ protected:
 
 	UPROPERTY()
 	TObjectPtr<UAttributeSet> AttributeSet;
+
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Attributes")
+	TSubclassOf<UGameplayEffect> DefaultAttributes;
+
+	void InitDefaultAttributes() const;
+
+	virtual void AddCharacterAbilities();
+
+private:
+	UPROPERTY(EditAnywhere, Category = "Abilities")
+	TArray<TSubclassOf<UGameplayAbility>> StartupAbilities;
 };

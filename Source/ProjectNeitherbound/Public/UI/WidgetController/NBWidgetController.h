@@ -17,10 +17,10 @@ struct FWidgetControllerParams
 
 	FWidgetControllerParams() {};
 
-	FWidgetControllerParams(const TObjectPtr<APlayerController>& PlayerController, const TObjectPtr<APlayerState>& PlayerState,
-							const TObjectPtr<UAbilitySystemComponent>& AbilitySystemComponent, const TObjectPtr<UAttributeSet>& AttributeSet)
-	: PlayerController(PlayerController), PlayerState(PlayerState), AbilitySystemComponent(AbilitySystemComponent), AttributeSet(AttributeSet)
-	{}
+	FWidgetControllerParams(APlayerController*       PlayerController,
+	                        APlayerState*            PlayerState,
+	                        UAbilitySystemComponent* AbilitySystemComponent,
+	                        UAttributeSet*           AttributeSet);
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<APlayerController> PlayerController = nullptr;

@@ -25,10 +25,11 @@ public:
 
 	UOverlayWidgetController* GetOverlayWidgetController(const FWidgetControllerParams& WidgetControllerParams);
 
-	void InitOverlay(const TObjectPtr<APlayerController>& PlayerController, const TObjectPtr<APlayerState>& PlayerState, const TObjectPtr<UAbilitySystemComponent>& AbilitySystemComponent, const TObjectPtr<UAttributeSet>& AttributeSet);
+	void InitOverlay(APlayerController* PlayerController, APlayerState* PlayerState, UAbilitySystemComponent* AbilitySystemComponent, UAttributeSet
+	                 * AttributeSet);
 
 protected:
-	void SetOverlayWidgetController(const TObjectPtr<UOverlayWidgetController>& WidgetController);
+	void SetOverlayWidgetController(UOverlayWidgetController* WidgetController);
 
 private:
 	UPROPERTY(EditAnywhere)

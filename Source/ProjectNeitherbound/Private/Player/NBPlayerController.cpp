@@ -33,12 +33,16 @@ void ANBPlayerController::CursorTrace()
 	if(!LastActor)
 	{
 		if(CurrentActor)
+		{
 			CurrentActor->HighlightActor();
+		}
 	}
 	else
 	{
 		if(!CurrentActor)
+		{
 			LastActor->UnhighlightActor();
+		}
 		else if(LastActor != CurrentActor)
 		{
 			LastActor->UnhighlightActor();

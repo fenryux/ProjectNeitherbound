@@ -3,11 +3,11 @@
 
 #include "UI/WidgetController/OverlayWidgetController.h"
 
-#include "GameplayAbilitySystem/NBAttributeSet.h"
+#include "GameplayAbilitySystem/Attributes/NBPlayerAttributeSet.h"
 
 void UOverlayWidgetController::BroadcastInitialValues()
 {
-	const TObjectPtr<UNBAttributeSet> NBAttributeSet = CastChecked<UNBAttributeSet>(AttributeSet);
+	const TObjectPtr<UNBPlayerAttributeSet> NBAttributeSet = CastChecked<UNBPlayerAttributeSet>(AttributeSet);
 	
 	OnHealthChanged.Broadcast(NBAttributeSet->GetHealth());
 	OnMaxHealthChanged.Broadcast(NBAttributeSet->GetMaxHealth());
@@ -17,7 +17,7 @@ void UOverlayWidgetController::BroadcastInitialValues()
 
 void UOverlayWidgetController::BindCallbacksToDependencies()
 {
-	const TObjectPtr<UNBAttributeSet> NBAttributeSet = CastChecked<UNBAttributeSet>(AttributeSet);
+	const TObjectPtr<UNBPlayerAttributeSet> NBAttributeSet = CastChecked<UNBPlayerAttributeSet>(AttributeSet);
 
 	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(NBAttributeSet->GetHealthAttribute())
 		.AddUObject(this, &UOverlayWidgetController::HealthChanged);

@@ -21,7 +21,12 @@ class PROJECTNEITHERBOUND_API ITargetInterface
 	GENERATED_BODY()
 
 public:
+	//~ Begin Highlighting current target under mouse location
 	virtual void HighlightActor() = 0;
-
 	virtual void UnhighlightActor() = 0;
+	//~ End Highlighting current target under mouse location
+
+	//~ Begin Interact with target under mouse location
+	virtual void InteractWith() = 0;
+	//~ End Interact with target under mouse location
 };

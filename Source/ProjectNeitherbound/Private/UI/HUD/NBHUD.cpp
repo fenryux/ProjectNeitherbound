@@ -17,8 +17,8 @@ UOverlayWidgetController* ANBHUD::GetOverlayWidgetController(const FWidgetContro
 	return OverlayWidgetController;
 }
 
-void ANBHUD::InitOverlay(const TObjectPtr<APlayerController>& PlayerController, const TObjectPtr<APlayerState>& PlayerState,
-                         const TObjectPtr<UAbilitySystemComponent>& AbilitySystemComponent, const TObjectPtr<UAttributeSet>& AttributeSet)
+void ANBHUD::InitOverlay(APlayerController* PlayerController, APlayerState* PlayerState,
+                         UAbilitySystemComponent* AbilitySystemComponent, UAttributeSet* AttributeSet)
 {
 	checkf(OverlayWidgetClass, TEXT("OverlayWidgetClass uinitialized, fill out Blueprint class"))
 	checkf(OverlayWidgetControllerClass, TEXT("OverlayWidgetControllerClass uinitialized, fill out Blueprint class"))
@@ -35,7 +35,7 @@ void ANBHUD::InitOverlay(const TObjectPtr<APlayerController>& PlayerController, 
 	Widget->AddToViewport();
 }
 
-void ANBHUD::SetOverlayWidgetController(const TObjectPtr<UOverlayWidgetController>& WidgetController)
+void ANBHUD::SetOverlayWidgetController(UOverlayWidgetController* WidgetController)
 {
 	this->OverlayWidgetController = WidgetController;
 }

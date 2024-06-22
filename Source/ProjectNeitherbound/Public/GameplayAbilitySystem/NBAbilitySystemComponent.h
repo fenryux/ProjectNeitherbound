@@ -13,5 +13,7 @@ UCLASS()
 class PROJECTNEITHERBOUND_API UNBAbilitySystemComponent : public UAbilitySystemComponent
 {
 	GENERATED_BODY()
-	
+
+public:
+	void AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& StartupAbilities);
 };

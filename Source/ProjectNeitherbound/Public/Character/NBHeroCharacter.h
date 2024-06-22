@@ -6,7 +6,7 @@
 #include "Character/NBCharacterBase.h"
 #include "NBHeroCharacter.generated.h"
 
-class UNBAttributeSet;
+class UNBPlayerAttributeSet;
 class ANBPlayerState;
 class UCameraComponent;
 class USpringArmComponent;
@@ -23,10 +23,11 @@ public:
 
 protected:
 	virtual void Tick(float DeltaSeconds) override;
-	
-	virtual void PossessedBy(AController* NewController) override;
 
+	//~ Begin Replication Setup
+	virtual void PossessedBy(AController* NewController) override;
 	virtual void OnRep_PlayerState() override;
+	//~ End Replication Setup
 
 private:
 	void InitAbilityActorInfo();

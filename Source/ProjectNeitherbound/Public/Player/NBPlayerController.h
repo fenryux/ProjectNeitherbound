@@ -32,7 +32,9 @@ private:
 	TObjectPtr<UInputMappingContext> HeroContext;
 
 	void CursorTrace();
-	
-	TObjectPtr<ITargetInterface> LastActor;
-	TObjectPtr<ITargetInterface> CurrentActor;
+
+	//~ Begin Target Actors 
+	ITargetInterface* LastActor;
+	ITargetInterface* CurrentActor;
+	//~ End Target Actors
 };

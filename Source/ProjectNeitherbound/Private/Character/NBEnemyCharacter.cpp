@@ -2,9 +2,9 @@
 
 
 #include "Character/NBEnemyCharacter.h"
-
 #include "GameplayAbilitySystem/NBAbilitySystemComponent.h"
-#include "GameplayAbilitySystem/NBAttributeSet.h"
+#include "GameplayAbilitySystem/Attributes/NBEnemyAttributeSet.h"
+#include "GameplayAbilitySystem/Attributes/NBPlayerAttributeSet.h"
 
 
 ANBEnemyCharacter::ANBEnemyCharacter()
@@ -16,7 +16,7 @@ ANBEnemyCharacter::ANBEnemyCharacter()
 	AbilitySystemComponent->SetIsReplicated(true);
 	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
 
-	AttributeSet = CreateDefaultSubobject<UNBAttributeSet>("AttributeSet");
+	AttributeSet = CreateDefaultSubobject<UNBEnemyAttributeSet>("AttributeSet");
 }
 
 void ANBEnemyCharacter::BeginPlay()
@@ -24,6 +24,11 @@ void ANBEnemyCharacter::BeginPlay()
 	Super::BeginPlay();
 	
 	AbilitySystemComponent->InitAbilityActorInfo(this, this);
+}
+
+UAttributeSet* ANBEnemyCharacter::GetAttributeSet() const
+{
+	return AttributeSet;
 }
 
 void ANBEnemyCharacter::Tick(float DeltaSeconds)
@@ -39,4 +44,9 @@ void ANBEnemyCharacter::HighlightActor()
 void ANBEnemyCharacter::UnhighlightActor()
 {
 	GetMesh()->SetRenderCustomDepth(false);
+}
+
+void ANBEnemyCharacter::InteractWith()
+{
+	UNBEnemyAttributeSet* EnemyAttributeSet = Cast<UNBEnemyAttributeSet>(GetAttributeSet());
 }

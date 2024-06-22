@@ -4,7 +4,7 @@
 #include "Player/NBPlayerState.h"
 
 #include "GameplayAbilitySystem/NBAbilitySystemComponent.h"
-#include "GameplayAbilitySystem/NBAttributeSet.h"
+#include "GameplayAbilitySystem/Attributes/NBPlayerAttributeSet.h"
 
 ANBPlayerState::ANBPlayerState()
 {
@@ -12,7 +12,7 @@ ANBPlayerState::ANBPlayerState()
 	AbilitySystemComponent->SetIsReplicated(true);
 	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed);
 	
-	AttributeSet = CreateDefaultSubobject<UNBAttributeSet>("AttributeSet");
+	AttributeSet = CreateDefaultSubobject<UNBPlayerAttributeSet>("AttributeSet");
 }
 
 UAbilitySystemComponent* ANBPlayerState::GetAbilitySystemComponent() const

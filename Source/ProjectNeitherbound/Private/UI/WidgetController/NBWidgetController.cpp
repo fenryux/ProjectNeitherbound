@@ -3,6 +3,13 @@
 
 #include "UI/WidgetController/NBWidgetController.h"
 
+
+FWidgetControllerParams::FWidgetControllerParams(APlayerController* PlayerController, APlayerState* PlayerState,
+	UAbilitySystemComponent* AbilitySystemComponent, UAttributeSet* AttributeSet)
+: PlayerController(PlayerController), PlayerState(PlayerState), AbilitySystemComponent(AbilitySystemComponent), AttributeSet(AttributeSet)
+{
+}
+
 void UNBWidgetController::SetWidgetControllerParams(const FWidgetControllerParams& WidgetControllerParams)
 {
 	PlayerController       = WidgetControllerParams.PlayerController;
