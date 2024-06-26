@@ -3,6 +3,7 @@
 
 #include "GameplayAbilitySystem/NBAbilitySystemComponent.h"
 
+
 void UNBAbilitySystemComponent::AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& StartupAbilities)
 {
 	for(const auto AbilityClass : StartupAbilities)

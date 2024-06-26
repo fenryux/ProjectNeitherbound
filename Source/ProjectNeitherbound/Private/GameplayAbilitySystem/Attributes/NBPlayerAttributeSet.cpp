@@ -26,8 +26,11 @@ void UNBPlayerAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>
 	DOREPLIFETIME_CONDITION_NOTIFY(UNBPlayerAttributeSet, AttackRange, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UNBPlayerAttributeSet, CriticalStrikeChance, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UNBPlayerAttributeSet, CriticalStrikeMultiplier, COND_None, REPNOTIFY_Always);
-	DOREPLIFETIME_CONDITION_NOTIFY(UNBPlayerAttributeSet, MovementSpeed, COND_None, REPNOTIFY_Always);
 	//~ End Combat Attributes
+
+	//~ Begin Movement Attributes
+	DOREPLIFETIME_CONDITION_NOTIFY(UNBPlayerAttributeSet, MovementSpeed, COND_None, REPNOTIFY_Always);
+	//~ End Movement Attributes
 }
 
 void UNBPlayerAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue)

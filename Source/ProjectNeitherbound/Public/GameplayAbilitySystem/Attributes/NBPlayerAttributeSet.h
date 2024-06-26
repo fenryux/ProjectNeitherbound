@@ -61,11 +61,13 @@ public:
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing=OnRep_CriticalStrikeMultiplier, Category = "Combat Attributes");
 	FGameplayAttributeData CriticalStrikeMultiplier;
 	ATTRIBUTE_ACCESSORS(UNBPlayerAttributeSet, CriticalStrikeMultiplier);
+	//~ End Combat Attributes
 
-	UPROPERTY(BlueprintReadOnly, ReplicatedUsing=OnRep_MovementSpeed, Category = "Combat Attributes");
+	//~ Begin Movement Attributes
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing=OnRep_MovementSpeed, Category = "Movement Attributes");
 	FGameplayAttributeData MovementSpeed;
 	ATTRIBUTE_ACCESSORS(UNBPlayerAttributeSet, MovementSpeed);
-	//~ End Combat Attributes
+	//~ End Movement Attributes
 
 protected:
 	UFUNCTION()
